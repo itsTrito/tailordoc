@@ -30,10 +30,7 @@ def process_content(content, key, remove_tags):
         
     return content
 
-def main(yaml_config_file_path, input_file_path, output_file_path):
-    # Reading values from YAML file
-    yaml_data = read_yaml(yaml_config_file_path)
-    
+def process_file(yaml_config_file_path, input_file_path, output_file_path, yaml_data):
     if 'params' in yaml_data:
         content = read_file(input_file_path)
         for key, value in yaml_data['params'].items():
@@ -49,6 +46,22 @@ def main(yaml_config_file_path, input_file_path, output_file_path):
         with open(output_file_path, 'w+') as output_file:
             output_file.write(content)
             print(f"Generated {output_file_path} from {input_file_path} and {yaml_config_file_path}")
+
+
+def main(yaml_config_file_path, input_file_path, output_file_path):
+    # Reading values from YAML file
+    yaml_data = read_yaml(yaml_config_file_path)
+    
+    if 'langs' in yaml_data:
+        for lang_key, lang_value in yaml_data['langs'].items():
+            if lang_value is True:
+                process_file(yaml_config_file_path, input_file_path, output_file_path, yaml_data)
+    else:
+        process_file(yaml_config_file_path, input_file_path, output_file_path, yaml_data)
+
+
+
+    
 
 # main
 if __name__ == "__main__":

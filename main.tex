@@ -1,205 +1,380 @@
-% a mashup of hipstercv, friggeri and twenty cv
-% https://www.latextemplates.com/template/twenty-seconds-resumecv
-% https://www.latextemplates.com/template/friggeri-resume-cv
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+% (v1.7.1b, 11 Jan 2024) forked by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
 
-\documentclass[lighthipster]{simplehipstercv}
-% available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight, withoutsidebar
-% withoutsidebar
-\usepackage[utf8]{inputenc}
-\usepackage[default]{raleway}
-\usepackage[margin=1cm, a4paper]{geometry}
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
-%------------------------------------------------------------------ Variablen
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
 
-\newlength{\rightcolwidth}
-\newlength{\leftcolwidth}
-\setlength{\leftcolwidth}{0.23\textwidth}
-\setlength{\rightcolwidth}{0.75\textwidth}
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-%------------------------------------------------------------------
-\title{New Simple CV}
-\author{\LaTeX{} Ninja}
-\date{June 2019}
+%% Fork (before v1.6.5a): CV dark mode toggle enabler to use a inverted color palette.
+%% Use the "darkmode" option if you want a color palette used to 
+% \documentclass[10pt,a4paper,ragged2e,withhyper,darkmode]{altacv}
 
-\pagestyle{empty}
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+%% Fork v1.6.5c: Overwriting sloppy environment to ignore any spaces and be used to solve overlapping cvtags
+\newenvironment{sloppypar*}{\sloppy\ignorespaces}{\par}
+
+% Change the page layout if you need to
+\geometry{left=1.2cm,right=1.2cm,top=1cm,bottom=1cm,columnsep=0.75cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Fork (before v1.6.5a): Change the color codes to test your personal variant on any mode
+\ifdarkmode%
+  \definecolor{PrimaryColor}{HTML}{C69749}
+  \definecolor{SecondaryColor}{HTML}{D49B54}
+  \definecolor{ThirdColor}{HTML}{1877E8}
+  \definecolor{BodyColor}{HTML}{ABABAB}
+  \definecolor{EmphasisColor}{HTML}{ABABAB}
+  \definecolor{BackgroundColor}{HTML}{191919}
+\else%
+  \definecolor{PrimaryColor}{HTML}{001F5A}
+  \definecolor{SecondaryColor}{HTML}{0039AC}
+  \definecolor{ThirdColor}{HTML}{F3890B}
+  \definecolor{BodyColor}{HTML}{666666}
+  \definecolor{EmphasisColor}{HTML}{2E2E2E}
+  \definecolor{BackgroundColor}{HTML}{E2E2E2}
+\fi%
+
+\colorlet{name}{PrimaryColor}
+\colorlet{tagline}{SecondaryColor}
+\colorlet{heading}{PrimaryColor}
+\colorlet{headingrule}{ThirdColor}
+\colorlet{subheading}{SecondaryColor}
+\colorlet{accent}{SecondaryColor}
+\colorlet{emphasis}{EmphasisColor}
+\colorlet{body}{BodyColor}
+\pagecolor{BackgroundColor}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\small\bfseries}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+%% \addbibresource{main.bib}
+
 \begin{document}
 
+    \name{\centerline{Tristan Brault Ouellette}}
 
-\thispagestyle{empty}
-%-------------------------------------------------------------
+    \tagline{\centerline{
+        %<english>Developer \& Software Engineering Student
+        %<french>Développeur \& Étudiant en génie logiciel
+        }
+        }
 
-\section*{Start}
+    %% You can add multiple photos on the left or right
+    %\photoL{4cm}{john-doe}
 
-\simpleheader{headercolour}{Tristan}{Brault Ouellette}{Dev}{white}
+    \personalinfo{
+        \begin{center}
+        \email{tristan_04@outlook.fr}\smallskip
+        \phone{450-916-4513}
+        %<english>\location{Montreal, CA}
+        %<french>\location{Montréal, CA}
+        \linkedin{tristanbrault}
+        \github{itsTrito}
+        %\npm{npmUser}
+        %\dev{devtoUser}
+        %\homepage{nicolasomar.me}
+        %\medium{nicolasomar}
+        %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+        % \orcid{0000-0000-0000-0000}
+        %% You can add your own arbtrary detail with
+        %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+        % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+        %% Or you can declare your own field with
+        %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+        % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+        % \gitlab{your_id}
+        \end{center}
+    }
+    
+    \makecvheader
+    %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+    % \AtBeginEnvironment{itemize}{\small}
+    
+    %% Set the left/right column width ratio to 6:4.
+    \columnratio{0.25}
 
+    % Start a 2-column paracol. Both the left and right columns will automatically
+    % break across pages if things get too long.
+    \begin{paracol}{2}
+        % ----- TECH STACK -----
+        \cvsection{TECH STACK}
+            %% Fork v1.6.5c: The sloppypar* environment is used to avoid tags overlapping with section width
+            \begin{sloppypar*}
+                %% Fork 1.7.1b: Now in case you want to highlight any tag, just add a '/true' property next to its text and it will change tag's text and border colors.
+                \cvtags{C++, Typescript, C\#, Java, Dart, SQL, Python, Go}
 
+                \divider\medskip
 
-%------------------------------------------------
+                \cvtags{Angular, Flutter, Nest, Express, Git, Linux}\\
+                %<english>\cvtag{Many more...}\\
+                %<french>\cvtag{Bien d'autres...}\\
+            \end{sloppypar*}
+        % ----- TECH STACK -----
 
-% this has to be here so the paracols starts..
-\subsection*{}
-\vspace{4em}
+        % ----- STRENGHTS -----
+        \cvsection{
+            %<english> Strengths
+            %<french> Forces
+            }
 
-\setlength{\columnsep}{1.5cm}
-\columnratio{0.23}[0.75]
-\begin{paracol}{2}
-\hbadness5000
-%\backgroundcolor{c[1]}[rgb]{1,1,0.8} % cream yellow for column-1 %\backgroundcolor{g}[rgb]{0.8,1,1} % \backgroundcolor{l}[rgb]{0,0,0.7} % dark blue for left margin
+            %<*english>
+            \cvtags{Hard-working, Initiative, Autonomous, Curious}\\
+            \cvtags{Problem-solver}
+            %</english>
 
-\paracolbackgroundoptions
+            %<*french>
+            \cvtags{Travaillant, Initiative, Autonome, Curieux}\\
+            \cvtags{Résolution de problème}
+            %</french>
+        % ----- STRENGHTS -----
 
-% 0.9,0.9,0.9 -- 0.8,0.8,0.8
+        % ----- LANGUAGES -----
+        %<*english>
+        \cvsection{Languages}
 
+            \cvskill{French}{5}
+            \divider
 
-\footnotesize
-{\setasidefontcolour
-\flushright
-%\begin{center}
-%    \roundpic{jack.jpg}
-%\end{center}
+            \cvskill{English}{3.5}
+        %</english>
 
-\bg{cvgreen}{white}{About me}\\[0.5em]
+        %<*french>
+        \cvsection{Langages}
 
-{\footnotesize
+            \cvskill{Français}{5}
+            \divider
 
-%<english>Hi my name is Tristan
-%<french>Bonjour, mon nom est Tristan
+            \cvskill{Anglais}{3.5}
+        %</french>
+        % ----- LANGUAGES -----
+            
+        % ----- REFERENCES -----
+        % \cvsection{References}
+        %     \cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
+        %     \divider
 
-}
-\bigskip
+        %     \cvref{Boss\ Gamma Delta}{Business}{g.delta@business.com}
+        % ----- REFERENCES -----
+        
+        % ----- MOST PROUD -----
+        % \cvsection{Most Proud of}
+        
+        % \cvachievement{\faTrophy}{Fantastic Achievement}{and some details about it}\\
+        % \divider
+        % \cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}\\
+        % \divider
+        % \cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+        % ----- MOST PROUD -----
+        
+        % \cvsection{A Day of My Life}
+        
+        % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+        % \wheelchart{outer radius}{inner radius}{
+        % comma-separated list of value/text width/color/detail}
+        % \wheelchart{1.5cm}{0.5cm}{%
+        %   6/8em/accent!30/{Sleep,\\beautiful sleep},
+        %   3/8em/accent!40/Hopeful novelist by night,
+        %   8/8em/accent!60/Daytime job,
+        %   2/10em/accent/Sports and relaxation,
+        %   5/6em/accent!20/Spending time with family
+        % }
+        
+        % use ONLY \newpage if you want to force a page break for
+        % ONLY the current column
+        \newpage
+        
+        %% Switch to the right column. This will now automatically move to the second
+        %% page if the content is too long.
+        \switchcolumn
+        
+        \smallskip
+        % ----- ABOUT ME -----
+        \cvsection{
+            %<english> About Me
+            %<french> Profil
+            }
+            \begin{quote}
+                %<*english>
+                Hi, I'm Tristan.\\
+                \smallskip
+                A technology enthusiast with a thirst for learning, I love working with people and bring a good vibe to the workspace.\\
+                \smallskip
+                Currently studying at university, I'm looking for an internship opportunity for summer 2024. I am awaiting your news!
+                %</english>
+                %<*french>
+                Bonjour, je suis Tristan.\\
+                \smallskip
+                Un mordu de technologie avec une soif d'apprendre, j'adore travailler avec les gens et mettre la bonne humeur dans l’espace de travail.\\
+                \smallskip
+                Actuellement étudiant à l'université, je suis à la recherche d'une opportunité de stage pour l'été 2024. J'attends avec enthousiasme de vos nouvelles!
+                %</french>
+            \end{quote}
+        % ----- ABOUT ME -----
+        
+        % ----- EXPERIENCE -----
+        \cvsection{
+            %<english> Experience
+            %<french> Expérience
+            }
+        %<*english>
+            \cvevent{Web \& Mobile Developer}{Recursyve Solutions}{March 2022 -- May 2023}{Lavaltrie, CA}
+            \begin{itemize}
+                \item Development of a messaging module for a mobile application using Flutter.
+                \item Development of multiple web application using both Angular and Flutter.
+                \item Writing of unit tests with Jest.
+                \item Development of an API following REST principles using NestJS.
+            \end{itemize}
+            \divider
+            
+            \cvevent{IT Technician}{Groupe Evex}{June 2021 -- March 2022}{L'Assomption, CA}
+            \begin{itemize}
+                \item Technical support to employees
+                \item System administration
+                \item Management of IT infrastructure (IoT, Microsoft Azure, Wireless Network, etc.)
+            \end{itemize}
+        %</english>
+        %<*french>
+        \cvevent{Développeur Web \& Mobile}{Recursyve Solutions}{Mars 2022 -- Mai 2023}{Lavaltrie, CA}
+        \begin{itemize}
+            \item Développement d'un module de messagerie pour une application mobile en Flutter.
+            \item Développement de plusieurs applications web avec Anglar et Flutter.
+            \item Écriture des tests unitaires avec Jest.
+            \item Développement d'API suivant les principes REST avec NestJS.
+        \end{itemize}
+        \divider
+        
+        \cvevent{Technicien informatique}{Groupe Evex}{Juin 2021 -- Mars 2022}{L'Assomption, CA}
+        \begin{itemize}
+            \item Soutien technique aux employés
+            \item Administration des systèmes
+            \item Gestion du parc informatique (IoT, Microsoft Azure, Réseau sans-fil, etc.)
+        \end{itemize}
+        %</french>
+        % ----- EXPERIENCE -----
+        
+        % ----- EDUCATION -----
+        \cvsection{
+            %<english> Education
+            %<french> Éducation
+            }
+            %<*english>
+            \cvevent{Bachelor of Software Engineering}{École de technologie supérieure}{September 2022 -- Actual}{Montréal, CA}
+            \begin{itemize}
+                \item GPA: 4/4.3
+                \item Teaching Assistant
+                \item Tutor for multiple SWE classes
+                \item Member of the biotechnology student club
+            \end{itemize}
+            \divider
+            
+            \cvevent{Computer Science College Degree}{Cégep régional de Lanaudière}{August 2019 -- June 2022}{Joliette, CA}
+            %</english>
 
-\bg{cvgreen}{white}{personal} \\[0.5em]
-Jack Sparrow
+            %<*french>
+            \cvevent{Baccalauréat en génie logiciel}{École de technologie supérieure}{Septembre 2022 -- Actuel}{Montréal, CA}
+            \begin{itemize}
+                \item GPA: 4/4.3
+                \item Chargé de laboratoire
+                \item Tuteur pour plusieurs cours de logiciel
+                \item Membre du club étudiant de biotechnologie
+            \end{itemize}
+            \divider
+            
+            \cvevent{DEC Technique Informatique}{Cégep régional de Lanaudière}{Août 2019 -- Juin 2022}{Joliette, CA}
+            %</french>
+        % ----- EDUCATION -----
+        
+        % ----- PROJECTS -----
+        \cvsection{
+            %<english> Projects
+            %<french> Projets
+            }
 
-nationality: English 
+            %<*english>
+            \cvevent{Graphics Engine}{\cvreference{\faGithub}{https://github.com/itsTrito/TEngine}}{}{}
+                % I've been working on a small game engine in my spare time for a bit of time. It initally started as contination of a school project and was made using C++ and OpenGL.\\
+                % The engine's performance left to be desired, so I decided to rewrite it using Vulkan and an ECS design.\\
+                Small graphics engine I'm currently working on using C++ and Vulkan.\\
+                \medskip
+                \cvtags{C++, OpenGL, Vulkan} 
+            \divider
+            
+            \cvevent{This resume}{\cvreference{\faGithub}{https://github.com/itsTrito/cv}}{}{}
+                % Yes, the very thing you're reading! You ear more and more often that you should always taylor your resume to the specific job description you are applying for.\\
+                % That's why I decided to utilize the power of Latex, Python and Shell scripts to simplify that process for me.\\
+                % I can automatically generate custom resumes in multiple languages by modifing a configuration file and running a script!\\
+                Suite of scripts allowing to generate custom resumes in multiple languages.\\
+                \medskip
+                \cvtags{LaTeX, Python, Shell}
+            %</english>
 
-1690
-
-\bigskip
-
-\bg{cvgreen}{white}{Areas of specialization} \\[0.5em]
-
-Privateering ~•~ Bucaneering ~•~ Parler ~•~ Rum
-
-\bigskip
-
-
-
-\bigskip
-
-\bg{cvgreen}{white}{Interests}\\[0.5em]
-
-\lorem
-\bigskip
-
-\bg{cvgreen}{white}{Interests}\\[0.5em]
-
-\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
-
-\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
-
-\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
-
-\vspace{4em}
-
-\infobubble{\faAt}{cvgreen}{white}{jack@sparrow.org}
-\infobubble{\faTwitter}{cvgreen}{white}{@sparrow}
-\infobubble{\faFacebook}{cvgreen}{white}{Jack Sparrow}
-\infobubble{\faGithub}{cvgreen}{white}{sparrow}
-
-\phantom{turn the page}
-
-\phantom{turn the page}
-}
-%-----------------------------------------------------------
-\switchcolumn
-
-\small
-\section*{Short Resumé}
-
-\begin{tabular}{r| p{0.5\textwidth} c}
-    \cvevent{2018--2021}{Captain of the Black Pearl}{Lead}{East Indies \color{cvred}}{Finally got the goddamn ship back.\lorem\lorem\lorem}{disney.png} \\
-    \cvevent{2016--2017}{Captain of the Black Pearl}{Lead}{Tortuga \color{cvred}}{Found a secret treasure, lost the ship. \lorem\lorem}{medal.jpeg}
-\end{tabular}
-\vspace{3em}
-
-\begin{minipage}[t]{0.35\textwidth}
-\section*{Degrees}
-\begin{tabular}{r p{0.6\textwidth} c}
-    \cvdegree{1710}{Captain}{Certified}{Tortuga Uni \color{headerblue}}{}{disney.png} \\
-    \cvdegree{1715}{Bucaneering}{M.A.}{London \color{headerblue}}{}{medal.jpeg} \\
-    \cvdegree{1720}{Bucaneering}{B.A.}{London \color{headerblue}}{}{medal.jpeg}
-\end{tabular}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.3\textwidth}
-\section*{Programming}
-\begin{tabular}{r @{\hspace{0.5em}}l}
-     \bg{skilllabelcolour}{iconcolour}{html, css} &  \barrule{0.4}{0.5em}{cvpurple}\\
-     \bg{skilllabelcolour}{iconcolour}{\LaTeX} & \barrule{0.55}{0.5em}{cvgreen} \\
-     \bg{skilllabelcolour}{iconcolour}{python} & \barrule{0.5}{0.5em}{cvpurple} \\
-     \bg{skilllabelcolour}{iconcolour}{R} & \barrule{0.25}{0.5em}{cvpurple} \\
-     \bg{skilllabelcolour}{iconcolour}{javascript} & \barrule{0.1}{0.5em}{cvpurple} \\
-\end{tabular}
-\end{minipage}
-
-\section*{Curriculum}
-\begin{tabular}{r| p{0.5\textwidth} c}
-    \cvevent{2018--2021}{Captain of the Black Pearl}{Lead}{East Indies \color{cvred}}{Finally got the goddamn ship back. \lorem}{disney.png} \\
-    \cvevent{2019}{Freelance Pirate}{Bucaneering}{Tortuga \color{cvred}}{This and that. The usual, aye?  \lorem}{medal.jpeg} \\
-\end{tabular}
-\vspace{3em}
-
-\begin{minipage}[t]{0.3\textwidth}
-\section*{Certificates \& Grants}
-\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.55\textwidth}}
-    1708 & Captain's Certificates \\
-    1710 & Travel grant \\
-    1715--1716 & Grant from the Pirate's Company
-\end{tabular}
-\bigskip
-
-\section*{Languages}
-\begin{tabular}{l | ll}
-\textbf{English} & C2 & {\phantom{x}\footnotesize mother tongue} \\
-\textbf{French} & C2 & \pictofraction{\faCircle}{cvgreen}{3}{black!30}{1}{\tiny} \\
-\textbf{Spanish} & C2 & \pictofraction{\faCircle}{cvgreen}{1}{black!30}{3}{\tiny} \\
-\textbf{Italian} & C2 & \pictofraction{\faCircle}{cvgreen}{3}{black!30}{1}{\tiny}
-\end{tabular}
-\bigskip
-
-\end{minipage}\hfill
-\begin{minipage}[t]{0.3\textwidth}
-\section*{Publications}
-\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.7\textwidth}}
-    1729 & \emph{How I almost got killed by Lady Swan}, Tortuga Printing Press. \\
-    1720 & ``Privateering for Beginners'', in: \emph{The Pragmatic Pirate} (1/1720).
-\end{tabular}
-\bigskip
-
-\section*{Talks}
-\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.6\textwidth}}
-    Nov. 1726 & ``How I lost my ship (\& and how to get it back)'', at: \emph{Annual Pirate's Conference} in Tortuga, Nov. 1726.
-\end{tabular}
-\end{minipage}
-
-
-
-
-
-
-\vfill{} % Whitespace before final footer
-
-%----------------------------------------------------------------------------------------
-%	FINAL FOOTER
-%----------------------------------------------------------------------------------------
-\setlength{\parindent}{0pt}
-\begin{minipage}[t]{\rightcolwidth}
-\begin{center}\fontfamily{\sfdefault}\selectfont \color{black!70}
-{\small Jack Sparrow \icon{\faEnvelopeO}{cvgreen}{} The Black Pearl \icon{\faMapMarker}{cvgreen}{} Tortuga \icon{\faPhone}{cvgreen}{} 0099/333 5647380 \newline\icon{\faAt}{cvgreen}{} \protect\url{jack@sparrow.com}
-}
-\end{center}
-\end{minipage}
-
-\end{paracol}
-
+            %<*french>
+            \cvevent{Moteur graphique}{\cvreference{\faGithub}{https://github.com/itsTrito/TEngine}}{}{}
+                % Je travaille depuis un moment sur un petit moteur de jeu dans mon temps libre. Il a initialement commencé comme la continuation d'un projet scolaire et a été réalisé avec C++ et OpenGL.\\
+                % Les performances du moteur laissaient à désirer, j'ai donc décidé de le réécrire en utilisant Vulkan et une conception ECS.\\
+                Petit moteur graphique sur lequel je travaille actuellement en utilisant C++ et Vulkan.\\
+                \medskip
+                \cvtags{C++, OpenGL, Vulkan} 
+            \divider
+            
+            \cvevent{Ce CV}{\cvreference{\faGithub}{https://github.com/itsTrito/cv}}{}{}
+                % Oui, ce que vous lisez en ce moment! On entend de plus en plus souvent qu'on devrait toujours adapter notre CV à la description spécifique du poste pour lequel on postule.\\
+                % C'est pourquoi j'ai décidé d'utiliser la puissance de Latex, Python et des scripts Shell pour simplifier ce processus.\\
+                % Je peux automatiquement générer des CV personnalisés dans plusieurs langues en modifiant un fichier de configuration et en exécutant un script!\\
+                Suite de scripts permettant de générer des CV personnalisés en plusieurs langues.\\
+                \medskip
+                \cvtags{LaTeX, Python, Shell}
+            %</french>
+        % ----- PROJECTS -----
+    \end{paracol}
 \end{document}
