@@ -1,152 +1,65 @@
-# simple-hipstercv
-A more simple, lightweight and a little bit different version of the Hipster CV
+# cv
 
+## How to use
 
-*Image credits for the example images goes to Disney!*
+### run.sh
 
-These images are in the CV just for demonstration.
-Please replace them with your own photos and logos if you use this template!
+```bash
+Usage: ./run.sh [-k] [-s]
+Options:
+  -k   Enable keeping the generated folder after usage
+  -s   Enable silent mode. (Less verbose)
+```
 
-# Preview (withoutsidebar option)
-![Timeline CV](https://github.com/latex-ninja/simple-hipstercv/blob/master/withoutsidebar.png)
+### process_file.py
 
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Classic: <code>darkhipster</code> and <code>lighthipster</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/simple-hipstercv/blob/master/hipster-styles.png" 
-				alt="Simple HipsterCV Template Classic"
-				height="300"/>
-		</td>
-	</tr>			
-</table>
+```
+Usage: python process_file.py <yaml_file_path> <input_file_path> <output_file_path>
+```
 
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Pastels: <code>pastel</code> and <code>verylight</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/simple-hipstercv/blob/master/pastels.png" 
-				alt="Simple HipsterCV Template Pastels"
-				height="300" />
-		</td>
-	</tr>			
-</table>
+- <yaml_file_path> is config file
+- <input_file_path> is the file you want to process
+- <output_file_path> is the name you want for the outputed file
 
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Dark versions: <code>allblack</code> and <code>grey</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/simple-hipstercv/blob/master/darks.png" 
-				alt="Simple HipsterCV Template Dark" 
-				height="300"/>
-		</td>
-	</tr>			
-</table>
+### Config files
 
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Comparison to the original Hipster CV: <code>Simple Hipster</code> versus <code>Simple Hipster</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/simple-hipstercv/blob/master/comparison-hipster-simple.png" 
-				alt="Comparison Simple Hipster vs Hipster CV"
-				height="300"/>
-		</td>
-	</tr>			
-</table>
+You can create as much config yaml files in the ./configs directory. It will generate an output file for each of them (if you use the run.sh) it will also generate a file for each lang specified in the config file.
 
+```yaml
+# Var section let's you override some necessary variables
+# All optionals
+var:
+	input: "res/jack.tex"
+	comment_symbol: "%"
+# -------------------------
+# Chapters section let's you choose which part of the document will stay and which will be removed
+chapters:
+  experience: true
+  education: true
+# -------------------------
+# Langs section is like the chapters' section but it will create a new document for each lang
+langs:
+  english: true
+  french: true
+```
 
+### Res files
 
+On runtime, every file in the ./res directory will be copied in the ./generated folder so that they can be used by the intermediary files.
 
-# See also: Modern Simple CV 
+### Editing
 
-![Modern Simple CV](https://github.com/latex-ninja/hipster-cv/blob/master/previews/modern-simple-cv.png)
+You can use any tag with the following synthax
 
-[Get it here.](https://github.com/latex-ninja/modern-simple-cv)
+```latex
+%<*tag> opens the section
+Anyting between the two will be considered as part of the section. In works for both chapters and langs
+%</tag> closes the section
+%<tag> Will consider everything on the same line as part of the section
 
-# See also: Two Row Academic CV
+For langs the 2 first characters are also accepted
+%<english> is fine
+%<en> is also fine
 
-![Two Row Academic](https://github.com/latex-ninja/two-row-academic-cv/blob/master/two-row-academic-cv.png)
-
-[Get it here.](https://github.com/latex-ninja/two-row-academic-cv)
-
-# See also: Simple Academic CV (different versions)
-
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th><code>without image</code> and <code>with image</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/hipster-cv/blob/master/previews/academic-cvs.png" 
-				alt="Simple Academic CV"
-				height="300"/>
-		</td>
-	</tr>			
-</table>
-
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th><code>Version 2</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/simple-academic-resume/blob/master/simple-acad-cv.png" 
-				alt="Simple Academic CV"
-				height="300"/>
-		</td>
-	</tr>			
-</table>
-
-[Get it here.](https://github.com/latex-ninja/simple-academic-resume)
-
-# See also: The Hipster CV
-
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Classic: <code>darkhipster</code> and <code>lighthipster</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/hipster-cv/blob/master/previews/classic-hipstercvs.png" 
-				alt="HipsterCV Template Classic"
-				height="300"/>
-		</td>
-	</tr>			
-</table>
-
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Pastels: <code>verylight</code> and <code>pastel</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/hipster-cv/blob/master/previews/pastels-hipstercv.png" 
-				alt="HipsterCV Template Pastels"
-				height="300" />
-		</td>
-	</tr>			
-</table>
-
-<table width="100%" margin-left="auto" margin-right="auto">
-	<tr>
-		<th>Dark versions: <code>grey</code> and <code>allblack</code></th>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://github.com/latex-ninja/hipster-cv/blob/master/previews/dark-hipster-cvs.png" 
-				alt="HipsterCV Template Dark" 
-				height="300"/>
-		</td>
-	</tr>			
-</table>
-
-[Get it here.](https://github.com/latex-ninja/hipster-cv/)
-
+% The comment symbol can be overriden to be use with other languages
+```

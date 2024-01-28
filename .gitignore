@@ -2,5 +2,6 @@
 /auxil
 /out
 /.fleet
-generated_*.tex
 python-version
+/.vscode
+/generated
