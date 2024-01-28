@@ -5,3 +5,4 @@
 python-version
 /.vscode
 /generated
+**/.DS_Store

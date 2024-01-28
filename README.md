@@ -29,8 +29,8 @@ You can create as much config yaml files in the ./configs directory. It will gen
 # Var section let's you override some necessary variables
 # All optionals
 var:
-	input: "res/jack.tex"
-	comment_symbol: "%"
+  input: "res/jack.tex"
+  comment_symbol: "%"
 # -------------------------
 # Chapters section let's you choose which part of the document will stay and which will be removed
 chapters:
@@ -53,7 +53,8 @@ You can use any tag with the following synthax
 
 ```latex
 %<*tag> opens the section
-Anyting between the two will be considered as part of the section. In works for both chapters and langs
+Anyting between the two will be considered as part of the section.
+In works for both chapters and langs
 %</tag> closes the section
 %<tag> Will consider everything on the same line as part of the section
 
