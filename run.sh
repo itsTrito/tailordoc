@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CONFIG_DIR="configs"
-MAIN_TEX="main.tex"
+MAIN_TEX="sample.tex"
 OUT_DIR="out"
 AUX_DIR="auxil"
 GENERATED_DIR="generated"

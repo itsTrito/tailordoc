@@ -1,7 +1,7 @@
 # Var section let's you override some necessary variables
 # All optionals
 var:
-# input: "res/jack.tex"
+# input: "sample.tex"
 # comment_symbol: "%"
 # -------------------------
 # Chapters section let's you choose which part of the document will stay and which will be removed

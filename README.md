@@ -29,7 +29,7 @@ You can create as much config yaml files in the ./configs directory. It will gen
 # Var section let's you override some necessary variables
 # All optionals
 var:
-  input: "res/jack.tex"
+  input: "jack.tex"
   comment_symbol: "%"
 # -------------------------
 # Chapters section let's you choose which part of the document will stay and which will be removed
@@ -64,3 +64,11 @@ For langs the 2 first characters are also accepted
 
 % The comment symbol can be overriden to be use with other languages
 ```
+
+### Latex
+
+If you're using it with latex you'll need to install latex first. Make sure you can use the pdflatex command.
+
+### Credit
+
+The sample Latex project is from https://github.com/latex-ninja/simple-hipstercv/. All credit to latex-ninja
