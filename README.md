@@ -17,16 +17,16 @@ Options:
 Usage: python process_file.py <yaml_file_path> <input_file_path> <output_file_path>
 ```
 
-- <yaml_file_path> is config file
+- <yaml_file_path> is the config file
 - <input_file_path> is the file you want to process
-- <output_file_path> is the name you want for the outputed file
+- <output_file_path> is the name of your output file
 
 ### Config files
 
 You can create as much config yaml files in the ./configs directory. It will generate an output file for each of them (if you use the run.sh) it will also generate a file for each lang specified in the config file.
 
 ```yaml
-# Var section let's you override some necessary variables
+# Var section let's you override some useful variables
 # All optionals
 var:
   input: "jack.tex"
@@ -45,7 +45,7 @@ langs:
 
 ### Res files
 
-On runtime, every file in the ./res directory will be copied in the ./generated folder so that they can be used by the intermediary files.
+On runtime, every file in the ./res directory will be copied in the ./generated folder to be used by the temporary intermediate files.
 
 ### Editing
 
@@ -62,7 +62,7 @@ For langs the 2 first characters are also accepted
 %<english> is fine
 %<en> is also fine
 
-% The comment symbol can be overriden to be use with other languages
+% The comment symbol can be overriden to be used with other languages
 ```
 
 ### Latex
